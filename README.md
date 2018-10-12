@@ -1,0 +1,1 @@
+# git-p4-for-perforce-bad-encoding
