@@ -3059,7 +3059,7 @@ class P4Sync(Command, P4UserMap):
         self.gitStream.write("committer %s\n" % committer)
 
         self.gitStream.write("data <<EOT\n")
-        self.gitStream.write(details["desc"])
+        self.gitStream.write(details["desc"].decode('cp1252', 'replace').encode('utf8', 'replace'))
         if len(jobs) > 0:
             self.gitStream.write("\nJobs: %s" % (' '.join(jobs)))
 
@@ -3290,7 +3290,7 @@ class P4Sync(Command, P4UserMap):
 
     def updateOptionDict(self, d):
         print("Description:")
-        print(d["desc"].decode('cp1252', 'replace').encode('utf8', 'replace'))    
+        print(d["desc"])    
         option_keys = {}
         if self.keepRepoPath:
             option_keys['keepRepoPath'] = 1
